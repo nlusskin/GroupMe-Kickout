@@ -1,11 +1,14 @@
 <?php 
+$ft = $_GET['type'];
+
+if ($ft == 'tCheck'){
 if (!$_GET['access_token']){
-    echo "window.location = 'https://oauth.groupme.com/oauth/login_dialog?client_id=NkuhJN7TVOnFFMar9YbaHe8OCGezw8TuPh5vxodpl1sQNz7M'";
+    echo "window.location = ''";
 }
 else {
     
 $token = "?token=".$_GET['access_token'];
 //Structure
-
+}
 }
 ?>
