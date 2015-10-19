@@ -1,9 +1,8 @@
 <?php
 if (!$_GET['access_token']){
-    echo "window.location = 'https://oauth.groupme.com/oauth/authorize?client_id=NkuhJN7TVOnFFMar9YbaHe8OCGezw8TuPh5vxodpl1sQNz7M'";
+    echo "<script type='text/javascript'>window.location = 'https://oauth.groupme.com/oauth/authorize?client_id=NkuhJN7TVOnFFMar9YbaHe8OCGezw8TuPh5vxodpl1sQNz7M'</script>";
 }
 else {
-    
 $token = "?token=".$_GET['access_token'];
 //Structure
 echo '
@@ -33,15 +32,26 @@ echo '
         </form>
     </div>
     <p id="token"></p>
+    <p id="response"></p>
     <script type="text/javascript" charset="utf-8">
-    var token = access_token;
+    var token = '.$token.';
     document.getElementById("token").innerHtml = "Your token is: " + token;
+
+    var groupX = new XMLHttpRequest();
+ 		groupX.onreadystatechange = function() {
+ 		    var groups = groupX.responseText;
+ 		    document.getElementById("response").innerHTML = groups;
+ 		}
+ 		groupX.open("GET", "https://api.groupme.com/v3/groups?token=" + token + "&per_page=100", true);
+ 		groupX.send();
+ 		
+
+    
     var x = document.getElementById("groups");
     var y = document.createElement("option");
     y.text = "Selector";
     x.add(y);
-    </script>
-<script type="text/javascript" charset="utf-8">
+
         /*var tCheck = new XMLHttpRequest();
  		tCheck.onreadystatechange = function() {
  		    var token = tCheck.responseText;
