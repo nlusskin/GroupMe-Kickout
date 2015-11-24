@@ -83,7 +83,7 @@ maximum of 30 minutes before you have to come back and repeat the steps. If you 
     <p id="token"></p>
     <p id="response"></p>
     <script type="text/javascript" charset="utf-8">
-    var token = "'.$token.'";
+    var token = "$token";
     document.getElementById("token").innerHTML = "Your token is: (hidden for security)";
 
 	var groupX = new XMLHttpRequest();
